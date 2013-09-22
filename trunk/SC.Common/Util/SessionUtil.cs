@@ -24,6 +24,10 @@ namespace SC.Common.Util
                 return obj == null ? 0 : int.Parse(obj.ToString());
 
             }
+            set
+            {
+                System.Web.HttpContext.Current.Session["AccountId"] = value;
+            }
         }
     }
 }

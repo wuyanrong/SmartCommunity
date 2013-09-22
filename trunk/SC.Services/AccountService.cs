@@ -9,7 +9,7 @@ using Evt.Framework.Common;
 
 namespace SC.Services
 {
-    public class AccountService:BaseService<AccountService>
+    public class AccountService : BaseService<AccountService>
     {
 
         public void Register(AccountDataModel model)
@@ -31,7 +31,7 @@ namespace SC.Services
         public AccountDataModel Login(AccountDataModel model)
         {
             var obj = DbUtil.DataManager.Current.Retrieve(new AccountDataModel() { Email = model.Email, Passsword = model.Passsword });
-            if (obj==null)
+            if (obj == null)
             {
                 return null;
             }
@@ -77,17 +77,20 @@ namespace SC.Services
             string condition = string.Empty;
             foreach (var item in idList)
             {
-                condition += "'" + item + "',";
+                if (!string.IsNullOrEmpty(item))
+                {
+                    condition += "'" + item + "',";
+                }
             }
-            condition.TrimEnd(new char[] { ','});
-            string sql = string.Format(@"select Name from Community where ID in({0})",condition);
+            condition = condition.TrimEnd(new char[] { ',' });
+            string sql = string.Format(@"select Name from Community where ID in({0})", condition);
             var dt = DbUtil.DataManager.Current.IData.ExecuteDataTable(sql);
             string result = string.Empty;
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                result = dt.Rows[i]["Name"].ToString()+",";
+                result = dt.Rows[i]["Name"].ToString() + ",";
             }
-            return result.TrimEnd(new char[]{','});
+            return result.TrimEnd(new char[] { ',' });
         }
     }
 }

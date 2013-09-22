@@ -57,7 +57,7 @@
         <div class="footerWrap" data-position="fixed" data-role="footer" data-theme="a">
             <ul class="footmenu">
                 <li class="a"><a href="@(SC.Common.Util.SessionUtil.AccountId == 0 ? "/MAccount/Login/" : "/MMerchant/Detail")" target="_self" data-transition="slideup">用户中心</a> </li>
-                <li class="b"><a href="@(SC.Common.Util.SessionUtil.AccountId == 0 ? "/MAccount/Login/" : "/MMerchant/FavoriteList")" target="_self" data-transition="slideup">我的商家</a>
+                <li class="b"><a href="@(SC.Common.Util.SessionUtil.AccountId == 0 ? "/MAccount/Login/" : "/MMerchant/GetFavoriteMerchant")" target="_self" data-transition="slideup">我的商家</a>
                 </li>
                 <li class="c"><a href="/MAccount/Login/" target="_self" data-transition="slideup">手机开店</a> </li>
             </ul>

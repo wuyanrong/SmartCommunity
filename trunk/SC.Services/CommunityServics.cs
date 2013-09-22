@@ -13,9 +13,13 @@ namespace SC.Services
     {
         public CommunityViewModel GetDetail(string communityId)
         {
-            string sql = @"SELECT ID,  Name,ServiceCategoryIds FROM dbo.Community WHERE ID=@ID";
+            int id = 0;
+            int.TryParse(communityId, out id);
+            string condition = id != 0 ? " WHERE ID=@ID " : " WHERE Name=@Name ";
+            string sql = @"SELECT ID,  Name,ServiceCategoryIds FROM dbo.Community " + condition;
             ParameterCollection pc = new ParameterCollection();
             pc.Add("ID", communityId);
+            pc.Add("Name", communityId);
             var dt = DbUtil.DataManager.Current.IData.ExecuteDataTable(sql, pc);
             CommunityViewModel model = new CommunityViewModel();
             if (dt.Rows.Count > 0)

@@ -42,14 +42,15 @@ namespace SC.Controllers
         /// <returns></returns>
         public ActionResult DoLogin(AccountDataModel model)
         {
-            var dt = AccountService.Instance.Login(model);
+            var modelResult = AccountService.Instance.Login(model);
             ViewBag.Account = new AccountDataModel();
-            if (dt != null)
+            if (modelResult != null)
             {
-                ViewBag.Account = dt;
+                ViewBag.Account = modelResult;
+                SessionUtil.AccountId = int.Parse(modelResult.Id.ToString());
                 return viewResult.View(this, "Detail");
             }
-            ViewBag.Account = dt;
+            ViewBag.Account = modelResult;
             return viewResult.View(this, "Login");
         }
 

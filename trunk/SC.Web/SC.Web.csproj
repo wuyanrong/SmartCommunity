@@ -177,6 +177,7 @@
     <Content Include="Views\Mobile\Community\Detail.cshtml" />
     <Content Include="Views\Mobile\Merchant\List.cshtml" />
     <Content Include="Views\Mobile\Merchant\FavoriteList.cshtml" />
+    <Content Include="Views\Mobile\Merchant\Edit.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
