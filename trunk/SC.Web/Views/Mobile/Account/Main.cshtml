@@ -1,0 +1,141 @@
+﻿@{
+    SC.Models.AccountDataModel account = ViewBag.Account as SC.Models.AccountDataModel;
+    SC.Models.MerchantDataModel merchant = ViewBag.Merchant as SC.Models.MerchantDataModel;
+    Layout = null;
+    ViewBag.Title = "Main";
+
+    string action = SC.Common.Util.RequestUtil.Action;
+}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+        name="viewport" />
+    <meta name='apple-mobile-web-app-capable' content='yes' />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>微站</title>
+    <link href="/css/jquery.mobile-1.3.1.min.css" type="text/css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/js/jquery-1.8.1.js"></script>
+    <script type="text/javascript" src="/js/jquery.mobile-1.3.1.min.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                $("#step2").hide();
+                $("#next").click(function () { $("#step1").hide(); $("#step2").show() });
+            });
+    </script>
+    <script type="text/javascript" src="/js/v1.js"></script>
+
+</head>
+<body class="body">
+    <form action="@(action.ToLower() == "add" ? "DoAdd" : "DoEdit")">
+    <div id="page" data-role="page">
+        <div id="step1">
+            <div class="headerWrap" data-position="fixed" data-role="header" data-theme="a">
+                <a href="javascript:windowBack()" class="back1" data-icon="back" data-transition="slide">
+                    返回</a>
+                <h1>
+                    新店开张</h1>
+            </div>
+            <input type="hidden" name="Id" value="@(string.IsNullOrEmpty(account.Id.ToString()) ? string.Empty : account.Id.ToString())" />
+            <div class="accountWrap">
+                <div class="logWrap">
+                    <div class="accountIptWrap">
+                        <div class="each">
+                            <div class="name">
+                                手机号*</div>
+                            <div class="iptWrap">
+                                <input type="text" name="Email" value="@account.Email" data-role="none" />
+                                @*<input placeholder="已注册的手机号" data-role="none" type="text">*@
+                            </div>
+                        </div>
+                        <div class="each">
+                            <div class="name">
+                                密码*</div>
+                            <div class="iptWrap">
+                                <input type="password" name="Passsword" placeholder="6-12位"  value="@account.Passsword" data-role="none" />
+                                @*<input placeholder="6-12位" data-role="none" type="text">*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rememberTip">
+                        <div class="fl clk">
+                            <label data-role="none">
+                                <input checked data-role="none" type="checkbox">
+                                我已阅读商户协议</label>
+                        </div>
+                    </div>
+                    <div class="btnbg">
+                        <a id="next" href="#">下一步</a> @*<input type="submit" name="btnOK" value="确定" />*@
+                    </div>
+                    <form>
+                    @*                <div class="myStoreRegTipWrap">
+                    <div class="btnbg2">
+                        <a href="/MAccount/Register">还没开店？赶快来注册吧！</a>
+                    </div>
+                </div>*@
+                </div>
+            </div>
+        </div>
+        <div id="step2">
+            <div class="headerWrap" data-position="fixed" data-role="header" data-theme="a">
+                <a href="javascript:windowBack()" class="back1" data-icon="back" data-transition="slide">
+                    返回</a>
+                <h1>
+                    店铺档案</h1>
+                <a class="rbtn" href="myStoreHelp.html">帮助</a>
+            </div>
+            <div class="storeRecord">
+                <ul class="iptEachList">
+                    <li class="three">
+                        <div class="eachLine">
+                            <span class="name">店铺名*</span>
+                            <div class="iptWrap">
+                                <input data-role="none" type="text" name="@merchant.Name" placeholder="必填">
+                                @*<input data-role="none" type="text" placeholder="必填">*@
+                            </div>
+                        </div>
+                    </li>
+                    <li class="arrow"><a href="cityList.html">城市*</a> </li>
+                    <li class="arrow"><a href="fwTypeList.html">服务类别*</a> </li>
+                    <li class="four">
+                        <div class="eachLine">
+                            <span class="name">店铺地址*</span>
+                            <div class="iptWrap">
+                                <input data-role="none" name="@merchant.Address" type="text" placeholder="请输入正确的地址">
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="iptEachList">
+                    <li class="four">
+                        <div class="eachLine">
+                            <span class="name">服务手机*</span>
+                            <div class="iptWrap">
+                                <input data-role="none" type="text" name="@merchant.Mobphone" value="18759865986">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="four">
+                        <div class="eachLine">
+                            <span class="name">服务座机</span>
+                            <div class="iptWrap">
+                                <input data-role="none" name="@merchant.Telphone" type="text">
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <!-- <div class="btnbg" onClick='showMsg("2","确认店铺基本信息","确定提交你的档案信息吗？","确定","取消")'>
+      <a href="myStoreManage.html" data-transition="slide">完成</a>
+    </div>-->
+                <div class="btnbg">
+                    <a href="myStoreManage.html" data-transition="slide">完成</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+</body>
+</html>

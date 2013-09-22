@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EE8E5D15-8CA8-47F5-BF22-DAE39E7C04DB}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SC.Test</RootNamespace>
+    <AssemblyName>SC.Test</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Evt.Framework.Common">
+      <HintPath>..\Bin\Evt.Framework.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Evt.Framework.DataAccess">
+      <HintPath>..\Bin\Evt.Framework.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Evt.Framework.Mvc">
+      <HintPath>..\Bin\Evt.Framework.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SC.Common\SC.Common.csproj">
+      <Project>{C03EAD2E-CCC2-4F85-8221-BCE7A1F00BFA}</Project>
+      <Name>SC.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SC.Controller\SC.Controllers.csproj">
+      <Project>{B2EFB26C-0045-4EBE-9546-E7393066A462}</Project>
+      <Name>SC.Controllers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SC.Models\SC.Models.csproj">
+      <Project>{A5D03830-4481-45FA-ADA1-47B1B8E5B636}</Project>
+      <Name>SC.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SC.Services\SC.Services.csproj">
+      <Project>{38D8E8E4-AB88-45BC-B87C-6A9BCC2DB039}</Project>
+      <Name>SC.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
